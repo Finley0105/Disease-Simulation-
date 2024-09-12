@@ -1,0 +1,16 @@
+import geopandas as gpd 
+import pandas as pandas
+import matplot.lib.pyplot as plt
+
+shape = gpd.red_file(shape_path)
+shape = pd.merge(
+    left = shape,
+    right = df, 
+    left_on='Name',
+    right_on='County',
+    how ='left')
+
+shape = shape.dropna()
+
+ax = shape.boundary.plot()
+shape.plot(ax=ax)
